@@ -13,4 +13,4 @@ export const photoReferenceURL = (cityName) => {
 export const photoURL = (reference) => {
   return `https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=${reference}&key=${process.env.REACT_APP_GOOGLE_API}`;
 };
-export const proxyURL = "https://cors-anywhere.herokuapp.com/";
+export const proxyURL = "http://localhost:8080/";
