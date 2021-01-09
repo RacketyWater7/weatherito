@@ -1,6 +1,7 @@
 const initState = {
   localWeather: [],
   sports: [],
+  photo: [],
 };
 
 const weatherReducer = (state = initState, action) => {
@@ -10,6 +11,7 @@ const weatherReducer = (state = initState, action) => {
         ...state,
         localWeather: action.payload.local,
         sports: action.payload.sports,
+        photo: action.payload.photo,
       };
     default:
       return { ...state };

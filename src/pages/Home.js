@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { v4 as uuidv4 } from "uuid";
 //Components
 import Search from "../components/Search";
 //Redux
@@ -14,13 +15,32 @@ const Home = () => {
   useEffect(() => {
     dispatch(loadWeather());
   }, [dispatch]);
-  //Get the data from store
-  const { localWeather, sports } = useSelector((state) => state.weather);
-  console.log(localWeather);
+  //Getting the data from store
+  const { localWeather, sports, photo } = useSelector((state) => state.weather);
+  console.log(photo);
+  const { location, current, forecast } = useSelector(
+    (state) => state.weather.localWeather
+  );
+
+  const { day } = useSelector(
+    (state) => state.weather.localWeather?.forecast?.forecastday[0] || {}
+  );
+  const { condition } = useSelector(
+    (state) => state.weather.localWeather?.forecast?.forecastday[0]?.day || {}
+  );
+
   return (
     <Container>
       <SearchContainer>
-        {/* <Search conditionImg={condition.icon} /> */}
+        {condition && day && (
+          <Search
+            current={current}
+            today={day}
+            condition={condition}
+            id={uuidv4()}
+            key={uuidv4()}
+          />
+        )}
       </SearchContainer>
       <InfoContainer>
         <div className="nav"></div>

@@ -1,4 +1,4 @@
-const initialState = { weather: {} };
+const initialState = { weather: [], placePhoto: [] };
 
 const searchedReducer = (state = initialState, action) => {
   switch (action.type) {
